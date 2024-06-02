@@ -57,9 +57,6 @@ def paddle_b_down():
     y -= 20 #subtract 20 to the y coordinate
     paddleB.sety(y) #set y of the paddle to the new y coordinate
     
-
-
-    
 # Keyboard binding
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")    
@@ -91,3 +88,14 @@ while True:
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+
+    # Paddle and ball collisions
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddleB.ycor() + 50 and ball.ycor() > paddleB.ycor() - 50):
+        ball.setx(340)
+        ball.dx *= -1
+        
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddleA.ycor() + 50 and ball.ycor() > paddleA.ycor() - 50):
+        ball.setx(-340)
+        ball.dx *= -1          
+        
+        
