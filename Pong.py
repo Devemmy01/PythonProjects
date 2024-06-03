@@ -33,6 +33,8 @@ ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = 2
+ball.dy = -2
 
 # Paddle movement (Function)
 def paddle_a_up():
@@ -54,6 +56,8 @@ def paddle_b_down():
     y = paddleB.ycor() #gets the y coordinate of the first paddle
     y -= 20 #subtract 20 to the y coordinate
     paddleB.sety(y) #set y of the paddle to the new y coordinate
+    
+
 
     
 # Keyboard binding
@@ -66,3 +70,24 @@ wn.onkeypress(paddle_b_down, "Down")
 # Main loop
 while True:
     wn.update()
+    
+    # To move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+    
+    # Check for borders
+    if ball.ycor() > 290:
+        ball.sety(290) 
+        ball.dy *= -1 # Reverse the direction of the ball
+        
+    if ball.ycor() < -290:
+        ball.sety(-290) 
+        ball.dy *= -1
+        
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+        
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
