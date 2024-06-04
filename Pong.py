@@ -1,6 +1,7 @@
 # Pong game in python
 
 import turtle
+import os
 
 wn = turtle.Screen()
 wn.title("Pong by @Devemmy")
@@ -37,8 +38,8 @@ ball.shape("circle")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = .1
-ball.dy = .1
+ball.dx = .13
+ball.dy = .13
 
 # Pen
 pen = turtle.Turtle()
@@ -89,10 +90,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290) 
         ball.dy *= -1 # Reverse the direction of the ball
+        os.system("mpg123 sound.mp3&")
         
     if ball.ycor() < -290:
         ball.sety(-290) 
         ball.dy *= -1
+        os.system("mpg123 sound.mp3&")
         
     if ball.xcor() > 390:
         ball.goto(0, 0)
@@ -112,8 +115,10 @@ while True:
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddleB.ycor() + 50 and ball.ycor() > paddleB.ycor() - 50):
         ball.setx(340)
         ball.dx *= -1
+        os.system("mpg123 sound.mp3&")
         
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddleA.ycor() + 50 and ball.ycor() > paddleA.ycor() - 50):
         ball.setx(-340)
-        ball.dx *= -1          
+        ball.dx *= -1       
+        os.system("mpg123 sound.mp3&")   
         
